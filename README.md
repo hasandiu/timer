@@ -1,1 +1,1 @@
-# timer
+[Timer](https://hasansec.github.io/timer)
