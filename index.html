@@ -1,0 +1,20 @@
+<html>
+<head>
+    <title id="stopwatch_on_title">00:00:00</title>
+    <style>
+        body{background:#202020;color:white}button{width:150px;height:45px;border:3px soldi white;font-size:25px;border-radius:50px;background:#202020;color:white;cursor:pointer;outline:0}button:hover{background:aqua;border:solid 1px white;color:black}#stopwatch{font-size:250px;position:absolute;top:45%;left:50%;transform:translate(-50%,-55%)}#buttons{position:absolute;top:75%;left:48.4%;transform:translate(-51.6%,-45%)}#buttons li{display:inline;padding-left:50px}
+    </style>
+</head>
+<body>
+    <div id="stopwatch" style="color: rgb(34, 255, 0); font-weight: bold;">
+        00:00:00
+    </div>
+    <ul id="buttons">
+        <li><button id="start_pause" onclick="runTimer()">Start</button></li>
+        <li><button onclick="resetTimer()">Reset</button></li>
+    </ul>
+    <script>
+        const timer=document.getElementById("stopwatch"),timer_on_title=document.getElementById("stopwatch_on_title"),start_pause_button=document.getElementById("start_pause");var hr=0,min=0,sec=0,stoptime=!0;function runTimer(){1==stoptime?(stoptime=!1,timerCycle(),start_pause_button.innerHTML="Pause"):(stoptime=!0,start_pause_button.innerHTML="Resume")}function timerCycle(){0==stoptime&&(sec=parseInt(sec),min=parseInt(min),hr=parseInt(hr),60==(sec+=1)&&(min+=1,sec=0),60==min&&(hr+=1,min=0,sec=0),(sec<10||0==sec)&&(sec="0"+sec),(min<10||0==min)&&(min="0"+min),(hr<10||0==hr)&&(hr="0"+hr),timer.innerHTML=hr+":"+min+":"+sec,timer_on_title.innerHTML=hr+":"+min+":"+sec,setTimeout("timerCycle()",1e3))}function resetTimer(){timer.innerHTML="00:00:00",timer_on_title.innerHTML="00:00:00",stoptime=!0,hr=0,sec=0,min=0}
+    </script>
+</body>
+</html>
